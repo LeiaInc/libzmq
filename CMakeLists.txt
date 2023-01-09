@@ -7,6 +7,20 @@ else()
   cmake_minimum_required(VERSION 2.8.12)
 endif()
 
+if(POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW) # option() honors variables already set
+endif()
+
+if(NOT DISABLE_LEIA_CONFIGURATION)
+  set(ENABLE_DRAFTS ON)
+  set(ENABLE_CURVE OFF)
+  set(BUILD_SHARED OFF)
+  set(BUILD_TESTS OFF)
+  set(ENABLE_CPACK OFF)
+  set(ENABLE_CLANG OFF)
+  set(WITH_LIBBSD OFF)
+endif()
+
 include(CheckIncludeFiles)
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
